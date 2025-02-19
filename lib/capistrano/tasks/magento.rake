@@ -381,7 +381,7 @@ namespace :magento do
       end
     end
 
-    # Internal command used to check if maintenance mode is neeeded and disable when zero-down deploy is
+    # Internal command used to check if maintenance mode is neeeded and disable when zero downtime deploy is
     # possible or when maintenance mode was previously enabled on the deploy target
     task :check do
       on primary fetch(:magento_deploy_setup_role) do
@@ -455,7 +455,7 @@ namespace :magento do
             set :magento_deploy_maintenance, false
           elsif disable_maintenance
             info "Disabling maintenance mode management..."
-            info "There are no database updates or config changes. This is a zero-down deployment."
+            info "There are no database updates or config changes. This is a zero downtime deployment."
             set :magento_internal_zero_down_flag, true # Set internal flag to stop db schema/data upgrades from running
             set :magento_deploy_maintenance, false     # Disable maintenance mode management since it is not neccessary
           else
